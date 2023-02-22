@@ -88,12 +88,13 @@ router.get('/dislike/:id', async function(req, res, next) {
 
 
 router.get('/masvotadas', async function(req, res, next) {
-    res.send('mas votos')
+    const [resultado_fotos] = await pool.query('SELECT * FROM fotos ORDER BY votos DESC')
+    res.render('fotos', { resultado_fotos })
 });
 
 router.get('/menosvotadas', async function(req, res, next) {
-
-    res.send('menos votos')
+    const [resultado_fotos] = await pool.query('SELECT * FROM fotos ORDER BY votos')
+    res.render('fotos', { resultado_fotos })
 });
 
 module.exports = router;
