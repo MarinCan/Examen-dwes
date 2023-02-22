@@ -23,8 +23,12 @@
             
             <div class="card-body d-flex flex-column justify-content-center align-items-center">
                 <div>
-                    <i class="fa-solid fa-heart" style="color: red; margin-right: 2rem;"></i>
-                    <i class="fa-solid fa-heart-crack" style="color: gray; margin-right: 2rem;"></i>
+                    <a href="/fotos/like/<%= resultado_fotos[i].id %>">
+                        <i class="fa-solid fa-heart" style="color: red; margin-right: 2rem;"></i>
+                    </a>
+                    <a href="/fotos/dislike/<%= resultado_fotos[i].id %>">
+                        <i class="fa-solid fa-heart-crack" style="color: gray; margin-right: 2rem;"></i>
+                    </a>                    
                 </div>
                 <h3 class="card-title"> <%=resultado_fotos[i].titulo %> </h3>
                 <p class="card-text">Fecha: <%=resultado_fotos[i].fecha %></p>

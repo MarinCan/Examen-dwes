@@ -70,6 +70,23 @@ router.post('/edit/:id', async function(req, res, next) {
 });
 
 
+router.get('/like/:id', async function(req, res, next) {
+    const id = req.params.id
+
+    await pool.query('UPDATE fotos SET votos=votos+1 WHERE id = ?', [id])    
+
+    res.redirect('/fotos')
+});
+
+router.get('/dislike/:id', async function(req, res, next) {
+    const id = req.params.id
+
+    await pool.query('UPDATE fotos SET votos=votos-1 WHERE id = ?', [id])    
+
+    res.redirect('/fotos')
+});
+
+
 router.get('/masvotadas', async function(req, res, next) {
     res.send('mas votos')
 });
