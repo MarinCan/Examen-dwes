@@ -16,6 +16,9 @@
   align-items: center;
 }
 
+a{
+  text-decoration: none;
+}
 
 #pastilla{
   height: 50%;
@@ -44,7 +47,8 @@
 }
 
 #formulario{
-  height: 50%;
+  height: 60%;
+  width: 40%;
   border-radius: 10px;
   /* background-color: rgb(196, 150, 208); */
   box-shadow: 2px 2px 4px black;

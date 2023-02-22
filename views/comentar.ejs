@@ -13,26 +13,23 @@
 </head>
 <body>
     <%- include('partials/navigation.ejs') %>
-    <section class="container d-flex justify-content-center align-items-center" style="height: 90vh;">
+    <section class="container d-flex flex-column justify-content-center align-items-center" style="height: 90vh;">
 
         <div id="formulario">
-            <h1>Sube tus fotos</h1>
-            <form action="/fotos/add" method="post">
+
+            <h1>¡Deja tu comentario!</h1>
+
+            <form action="/fotos/comment/<%= id %>" method="post">
                 <div class="p-2">
-                    <input type="text" name="titulo" placeholder="Título" class="form-control" required>
+                    <input type="text" name="usuario" placeholder="Usuario" class="form-control" required>
                 </div>
                 <div class="p-2">
-                    <!-- <input type="text" name="descripcion" placeholder="Descripción"> -->
-                    <textarea name="descripcion" rows="4" class="form-control" placeholder="Descripción" required></textarea>
+                    <textarea name="comentario" rows="4" class="form-control" placeholder="Comentario" required></textarea>
                 </div>
                 <div class="p-2">
-                    <input type="text" name="url" placeholder="URL de la imagen" class="form-control" required>
-                </div>
-                <div class="p-2">
-                    <button type="submit" value="Guardar" class="btn btn-info">Subir</button>
+                    <button type="submit" value="Editar" class="btn btn-warning">Enviar</button>
                 </div>
             </form>
-
         </div>
     </section>
 </body>

@@ -62,7 +62,7 @@ router.post('/edit/:id', async function(req, res, next) {
         titulo, 
         descripcion,
         url
-      }
+    }
     
     await pool.query('UPDATE fotos SET ? WHERE id = ?', [foto_edit, id])
     
@@ -80,11 +80,44 @@ router.get('/like/:id', async function(req, res, next) {
 
 router.get('/dislike/:id', async function(req, res, next) {
     const id = req.params.id
-
-    await pool.query('UPDATE fotos SET votos=votos-1 WHERE id = ?', [id])    
+    const { titulo, descripcion, url} = req.body
 
     res.redirect('/fotos')
 });
+
+
+router.get('/comment/:id', async function(req, res, next) {
+    const id = req.params.id
+    res.render('comentar', {id})
+});
+
+
+router.post('/comment/:id', async function(req, res, next) {
+    console.log(req.body)
+    console.log(req.params.id)
+
+    const { usuario, comentario} = req.body
+    const foto_id = parseInt(req.params.id)
+
+    console.log(foto_id)
+
+    await pool.query("INSERT INTO comentarios SET ?", {
+        usuario,
+        comentario,
+        foto_id
+    })
+
+    res.redirect('/fotos')
+    
+});
+
+router.get('/show-comment/:id', async function(req, res, next) {
+    const id = req.params.id
+    const [comentarios] = await pool.query('SELECT * FROM comentarios WHERE foto_id = ?', [id])
+
+    res.render('comentarios', {comentarios})
+});
+
 
 
 router.get('/masvotadas', async function(req, res, next) {

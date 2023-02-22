@@ -19,3 +19,4 @@ CREATE TABLE comentarios(
     foto_id INT UNSIGNED,
     CONSTRAINT fk_foto FOREIGN KEY(foto_id) REFERENCES foto(id)
 );
+
